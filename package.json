@@ -1,0 +1,25 @@
+{
+  "name": "first_game",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/DaryaUrchenko/first_game.git"
+  },
+  "author": "yurchenko darya, abrashkin andrey",
+  "license": "BSD-2-Clause",
+  "bugs": {
+    "url": "https://github.com/DaryaUrchenko/first_game/issues"
+  },
+  "devDependencies": {
+    "grunt-shell": "~1.1.2",
+    "grunt": "~0.4.5",
+    "grunt-fest": "~0.1.6",
+    "grunt-contrib-watch": "~0.6.1",
+    "grunt-concurrent": "~2.0.1"
+  }
+}
