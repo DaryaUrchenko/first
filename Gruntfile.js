@@ -1,15 +1,24 @@
 module.exports = function (grunt) {
 	grunt.initConfig({
-		// watch: {
-		// 	fest: {
-		// 		files: ['templates/*.xml'],
-		// 		task: ['fest'],
-		// 		options: {
-		// 			interrupt: true,
-		// 			atBegin: true
-		// 		}
-		// 	}
-		// },
+		watch: {
+			fest: {
+				files: ['templates/*.xml'],
+				task: ['fest'],
+				options: {
+					atBegin: true
+				}
+			},
+			server: {
+				files: [
+				'public_html/js/**/*.js', // следим за статикой
+				'public_html/css/**/*.css'
+				],
+				options: {
+					interrupt: true,
+					livereload: true // перезагрузить страницу
+				}
+			}
+		},
 		shell: {
 			options: {
 				stdout: true,
@@ -17,7 +26,8 @@ module.exports = function (grunt) {
 			},
 			server: {
 				command: 'java -cp out/artifacts/first_jar/first.jar main.Main 8080' /* запуск сервера */
-			},
+			}
+		},
 		fest: {
 			templates: {
 				files: [{
@@ -35,14 +45,13 @@ module.exports = function (grunt) {
 					}
 				}
 			}
+		},
+		concurrent: {
+			targert: ['watch', 'shell'],
+			options: {
+				logConcurrentOutput: true // output logs
+			}
 		}
-		}
-		// concurrent: {
-		// 	targert: ['watch', 'shell'],
-		// 	options: {
-		// 		logConcurrentOutput: true // output logs
-		// 	}
-		// }
 	});
 
 	grunt.loadNpmTasks('grunt-contrib-watch');
@@ -50,5 +59,5 @@ module.exports = function (grunt) {
 	grunt.loadNpmTasks('grunt-shell');
 	grunt.loadNpmTasks('grunt-fest');
 
-	// grunt.registerTask('default', ['concurrent']);
+	grunt.registerTask('default', ['concurrent']);
 };
